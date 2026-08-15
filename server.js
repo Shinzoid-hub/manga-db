@@ -10,6 +10,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "Welcome")));
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "Welcome", "home.html"));
+})
 
 
 // Connect to MongoDB
@@ -52,14 +59,6 @@ app.post("/api/chapters", async (req, res) => {
         res.status(400).json({ message: "Error saving chapter", error: error.message });
     }
 });
-
-const path = require("path");
-
-app.use(express.static(path.join(__dirname, "Welcome")));
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "Welcome", "home.html"));
-})
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
