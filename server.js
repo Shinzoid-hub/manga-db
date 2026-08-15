@@ -55,10 +55,10 @@ app.post("/api/chapters", async (req, res) => {
 
 const path = require("path");
 
-app.use(express.static("__dirname"));
+app.use(express.static(path.join(__dirname, "Welcome")));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile(path.join(__dirname, "Welcome", "home.html"));
 })
 
 const PORT = process.env.PORT || 5000;
