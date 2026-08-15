@@ -53,6 +53,8 @@ app.post("/api/chapters", async (req, res) => {
     }
 });
 
+app.use(express.static("."));
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`🚀 The server is running on http://localhost:${PORT}`);
