@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="navbar">
+        <!-- logo -->
+        <a href="home.html" class="logo">
+            <img src="./png/logo.png" class="logo-img" alt="Manga Database Logo">
+        </a>
+
+        <!-- Navigation -->
+        <nav class="nav-links">
+            <a href="home.html" class="active">Home</a>
+            <a href="#">Manga</a>
+            <a href="#">Characters</a>
+            <a href="#">Genres</a>
+            <a href="#">About Us</a>
+        </nav>
+
+        <!-- First block: Search, Theme color & Profile -->
+        <div class="header-right">
+            <!-- Search -->
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <!-- Theme color -->
+            <button id="themeToggle" class="theme-toggle-btn" title="Theme color">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <!-- Profile avatar -->
+            <a href="./Sign In/login.html" class="user-profile" title="My Profile">
+                <img id="userAvatar" src="./png/user-icon.webp" alt="user" class="avatar">
+            </a>
+        </div>
+    </header>
+
+
+
+
+
+    <!-- HERO BANNER / SLIDER -->
+    <section class="hero-slider">
+        <!-- Slides -->
+        <div class="slides-container">
+
+            <!-- Slide 1: Demon Slayer -->
+            <div class="slide active" data-color="#a855f7" style="background-image: url('./png/DemonSlayer.jpg');">
+                <div class="hero-content">
+                    <div class="slide-tags">
+                        <span class="tag badge">#001</span>
+                        <span class="tag genre">ACTION</span>
+                        <span class="tag genre">DARK FANTASY</span>
+                    </div>
+                    <h1 class="hero-title">DEMON SLAYER</h1>
+                    <p class="hero-description">
+                        A family is attacked by demons and only two members survive - Tanjiro and his sister Nezuko, 
+                        who is turning into a demon slowly. Tanjiro sets out to become a demon slayer to avenge 
+                        his family and cure his sister.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="https://w3.read-demonslayer.com/" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> READ NOW</a>
+                        <a href="https://w3.read-demonslayer.com/" class="btn btn-secondary">DETAILS <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Chainsaw Man -->
+            <div class="slide" data-color="#ef4444" style="background-image: url('./png/ChainsawMan.avif');">
+                <div class="hero-content">
+                    <div class="slide-tags">
+                        <span class="tag badge">#002</span>
+                        <span class="tag genre">HORROR</span>
+                        <span class="tag genre">SUPERNATURAL</span>
+                    </div>
+                    <h1 class="hero-title">CHAINSAW MAN</h1>
+                    <p class="hero-description">
+                        Denji is a destitute devil hunter who has formed a contract with the Chainsaw Devil, Pochita.
+                        After being resurrected following a betrayal, he becomes Chainsaw Man.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="https://chainsawdevil.com/" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> READ NOW</a>
+                        <a href="https://chainsawdevil.com/" class="btn btn-secondary">DETAILS <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Solo Leveling -->
+            <div class="slide" data-color="#3b82f6" style="background-image: url('./png/SoloLeveling.jpg');">
+                <div class="hero-content">
+                    <div class="slide-tags">
+                        <span class="tag badge">#003</span>
+                        <span class="tag genre">ADVENTURE</span>
+                        <span class="tag genre">DARK FANTASY</span>
+                    </div>
+                    <h1 class="hero-title">Solo Leveling</h1>
+                    <p class="hero-description">
+                        "Solo Leveling" tells the story of Sung Jin-Woo, the weakest E-rank hunter, who
+                        barely scrapes by doing low-paying jobs. One day, he finds himself trapped in a
+                        dungeon where he and other hunters must fight for their lives.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="https://onlinesololevelingmanga.com/" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> READ NOW</a>
+                        <a href="https://onlinesololevelingmanga.com/" class="btn btn-secondary">DETAILS <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Nav buttons -->
+        <button class="slider-arrow prev-btn" id="prevSlide"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-arrow next-btn" id="nextSlide"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <!-- Dots -->
+        <div class="slider-dots" id="sliderDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- POPULAR MANGA SECTION -->
+    <section class="manga-section">
+        <!-- Шапка секции -->
+        <div class="section-header">
+            <div class="section-title">
+                <span class="icon">❖</span>
+                <h2>POPULAR MANGA</h2>
+                <span class="slashes">///</span>
+            </div>
+            <a href="#" class="view-all">VIEW ALL <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Карусель карточек -->
+        <div class="manga-carousel-wrapper">
+            <button class="carousel-nav prev" id="popularPrev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="carousel-nav next" id="popularNext"><i class="fa-solid fa-chevron-right"></i></button>
+
+            <div class="manga-grid" id="popularGrid">
+
+                <!-- Card 01 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/Luffy.webp');"></div>
+                    <div class="card-number">01</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">ONE PIECE</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Adventure · Fantasy</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 02 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/Golgo_13.webp');"></div>
+                    <div class="card-number accent-red">02</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">GOLGO 13</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Thriller · Crime</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 03 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/DragonBall.jpg');"></div>
+                    <div class="card-number">03</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">DRAGON BALL</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Action · Comedy</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 04 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/Doraemon.jpg');"></div>
+                    <div class="card-number">04</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">DORAEMON</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Comedy · Science Fiction</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 05 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/TokyoGhoul.avif')"></div>
+                    <div class="card-number">05</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">TOKYO GHOUL</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Horror · Psychological Thriller</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 06 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/Naruto.jpg');"></div>
+                    <div class="card-number">06</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">NARUTO</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Martial Arts · Comedy</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 07 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/Douma.gif');"></div>
+                    <div class="card-number">07</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">DEMON SLAYER</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Adventure · Dark Fantasy</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 08 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/SlumDunk.jpg');"></div>
+                    <div class="card-number">08</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">SLUM DUNK</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Sports · Drama</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 09 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/Kochira.jpg');"></div>
+                    <div class="card-number">09</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">KOCHIKAME</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Gag Manga · Slice-of-life</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 10 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/DeathNote.webp');"></div>
+                    <div class="card-number">10</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">DEATH NOTE</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Supernatural Thriller · Mystery</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 11 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/AttackOnTitan.jpg');"></div>
+                    <div class="card-number">11</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">ATTACK ON TITAN</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Post-apocalyptic · Dark Fantasy</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 12 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/HunterXHunter.jpg');"></div>
+                    <div class="card-number">12</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">HUNTER X HUNTER</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Action · Adventure</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 13 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/Bleach.jpg');"></div>
+                    <div class="card-number">13</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">BLEACH</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Adventure · Martial Arts</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 14 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/Jonathan.avif');"></div>
+                    <div class="card-number">14</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">JOJO'S BIZARRE ADVENTURE</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Mystery · Tactical Battle</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 15 -->
+                <a href="#" class="manga-card">
+                    <div class="card-image" style="background-image: url('./png2/JujutsuKaisen.jpg');"></div>
+                    <div class="card-number">15</div>
+                    <div class="card-content">
+                        <h3 class="manga-name">JUJUTSU KAISEN</h3>
+                        <div class="card-footer">
+                            <span class="manga-genres">Supernatural · Dark Fantasy</span>
+                            <div class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--  -->
+    
+
+
+    <script src="home.js"></script>
+</body>
+
+</html>

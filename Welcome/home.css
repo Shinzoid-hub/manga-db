@@ -1,0 +1,671 @@
+/* --- THEME COLOR --- */
+:root {
+    --bg-color: #07070a;
+    --header-bg: rgba(10, 10, 15, 0.85);
+    --text-main: #ffffff;
+    --text-muted: #8888a0;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --accent-color: #a855f7;
+    /* NEON */
+    --search-bg: #12121a;
+}
+
+[data-theme="light"] {
+    --bg-color: #f0f0f5;
+    --header-bg: rgba(240, 240, 245, 0.9);
+    --text-main: #121218;
+    --text-muted: #666680;
+    --border-color: rgba(0, 0, 0, 0.12);
+    --accent-color: #7c3aed;
+    --search-bg: #e2e2ec;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding-top: 75px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- NAVBAR STYLES --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4%;
+    z-index: 1000;
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 1));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 2));
+}
+
+/* NAVIGATION */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-main);
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* FIRST BLOCK */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* SEARCH */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    background: var(--search-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 38px 8px 14px;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    outline: none;
+    width: 220px;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+    width: 260px;
+}
+
+.search-box i {
+    position: absolute;
+    right: 12px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+
+/* THEME COLOR BUTTON */
+.theme-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: rotate(15deg);
+}
+
+/* PROFILE AVATAR */
+.user-profile {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    padding: 2px;
+    border: 2px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.user-profile:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.6);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+/* --- HERO SLIDER --- */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 75px);
+    /* Полный экран за вычетом шапки */
+    min-height: 550px;
+    overflow: hidden;
+}
+
+.slides-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Слайды */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease, transform 6s linear;
+    transform: scale(1.05);
+    /* Легкий зум эффект */
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+/* Затемнение фона градиентом для читаемости текста */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            rgba(7, 7, 10, 0.95) 0%,
+            rgba(7, 7, 10, 0.7) 45%,
+            rgba(7, 7, 10, 0.2) 100%);
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    z-index: 2;
+}
+
+/* Контент внутри слайда */
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 650px;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s ease 0.2s;
+}
+
+.slide.active .hero-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Теги и жанры */
+.slide-tags {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.tag.badge {
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.tag.genre {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Заголовок слайда */
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    text-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+.hero-description {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 550px;
+}
+
+/* Кнопки */
+.hero-actions {
+    display: flex;
+    gap: 18px;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.7);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--text-main);
+}
+
+/* Навигационные стрелки */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(10, 10, 15, 0.6);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: rgba(10, 10, 15, 0.9);
+}
+
+.prev-btn {
+    left: 25px;
+}
+
+.next-btn {
+    right: 25px;
+}
+
+/* Точки навигации */
+.slider-dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    width: 32px;
+    border-radius: 10px;
+    background: var(--accent-color);
+    box-shadow: 0 0 12px var(--accent-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- POPULAR MANGA SECTION --- */
+.manga-section {
+    width: 100%;
+    padding: 40px 4%;
+    position: relative;
+}
+
+/* Header секции с полосой */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title .icon {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+.section-title h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-main);
+}
+
+.section-title .slashes {
+    color: rgba(255, 255, 255, 0.2);
+    font-family: monospace;
+    font-weight: 700;
+}
+
+.view-all {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.view-all:hover {
+    color: var(--accent-color);
+}
+
+/* Обёртка с кнопкой прокрутки */
+.manga-carousel-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(10, 10, 15, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 40px;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.carousel-nav.prev{
+    left: -15px;
+}
+
+.carousel-nav.next{
+    right: -15px;
+}
+
+.carousel-nav:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: rgba(10, 10, 15, 0.95);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+/* Сетка с горизонтальным скроллом */
+.manga-grid {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 15px;
+    /* Скрываем стандартный полосу скролла */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.manga-grid::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+/* Карточка Манги */
+.manga-card {
+    flex: 0 0 240px;
+    /* Фиксированная ширина каждой карточки */
+    height: 310px;
+    border-radius: 12px;
+    background: #0f0f15;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.manga-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(168, 85, 247, 0.25);
+}
+
+/* Картинка карточки */
+.manga-card .card-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.65;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.manga-card:hover .card-image {
+    transform: scale(1.06);
+    opacity: 0.8;
+}
+
+/* Затемнение внутри карточки */
+.manga-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(10, 10, 15, 0.4) 0%,
+            rgba(10, 10, 15, 0.1) 40%,
+            rgba(10, 10, 15, 0.95) 100%);
+    z-index: 1;
+}
+
+/* Порядковый Номер (01, 02 и т.д.) */
+.card-number {
+    position: relative;
+    z-index: 2;
+    font-size: 3.2rem;
+    font-weight: 900;
+    line-height: 1;
+    font-family: monospace;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--accent-color);
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.card-number.accent-red {
+    -webkit-text-stroke: 1.5px #ef4444;
+}
+
+/* Нижняя текстовая инфа */
+.card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.manga-name {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.manga-genres {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.arrow-btn {
+    color: #fff;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.manga-card:hover .arrow-btn {
+    transform: translateX(4px);
+    color: var(--accent-color);
+}

@@ -1,0 +1,206 @@
+/* TOTAL RECEIPTTS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: #000;
+    overflow: hidden;
+}
+
+section{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- BANNER WITH SAMURAI --- */
+.login_banner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+}
+
+.login_banner .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login_banner .s-1,
+.login_banner .s-2{
+    position: absolute;
+    bottom: 0;
+    height: 75vh;
+    width: auto;
+    object-fit: contain;
+    z-index: 2;
+    opacity: 0;
+}
+
+/* FIRST SAMURAI */
+.login_banner .s-1{
+    left: 8%;
+    transform: translateX(-100px);
+    animation: slideLeft 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+/* SECOND SAMURAI */
+.login_banner .s-2{
+    right: 8%;
+    transform: translateX(100px);
+    animation: slideRight 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+
+/* --- BG EFFECTS --- */
+#smokeCanvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+
+/* --- INPUT FORMS --- */
+.login{
+    position: relative;
+    z-index: 10;
+    width: 400px;
+    padding: 35px 30px;
+    background-color: rgba(15, 15, 15, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: formFadeIn 0.8s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+.login .back-btn{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 30px;
+    border-radius: 0;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 80% 100%, 0% 100%);
+}
+
+.login .back-btn:hover{
+    background-color: #b40202;
+    border-color: #b40202;
+    color: #000000;
+    transform: translateX(-3px);
+    box-shadow: 0 0 12px rgba(240, 37, 37, 0.5);
+}
+
+.login h2{
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.inputBox{
+    margin-bottom: 18px;
+}
+
+.inputBox input{
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 6px;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.inputBox input:focus{
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.inputBox input[type="submit"]{
+    background-color: #096d00;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.inputBox input[type="submit"]:hover{
+    background-color: #10ad01;
+}
+
+.group{
+    margin: 15px;
+}
+
+.group a{
+    color: #bdbdbd;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    margin-bottom: 5px;
+}
+
+.group a:hover{
+    color: #fff;
+}
+
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes slideLeft{
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideRight{
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes formFadeIn{
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
