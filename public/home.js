@@ -1,5 +1,3 @@
-const Chapter = require("../models/Chapter");
-
 // --- THEME COLOR (DARK / LIGHT) ---
 const themeToggleBtn = document.getElementById("themeToggle");
 const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector("i") : null;
