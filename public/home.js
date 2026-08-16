@@ -163,7 +163,7 @@ if (popularGrid) {
 // Add new chapters system
 async function loadLatestChapters() {
   try {
-    const response = await fetch("http://localhost:5000/api/chapters/latest");
+    const response = await fetch("/api/chapters/latest");
     const chapters = await response.json();
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
@@ -202,5 +202,12 @@ async function loadLatestChapters() {
 }
 
 // Run when the page loads
-document.addEventListener("DOMContentLoaded", loadLatestChapters); 
+document.addEventListener("DOMContentLoaded", () => {
+  loadLatestChapters();
+  
+  // auto refreshing every 10s
+  setInterval(loadLatestChapters, 10000);
+});
+
+
 
