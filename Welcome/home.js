@@ -165,8 +165,9 @@ if (popularGrid) {
 // Add new chapters system
 async function loadLatestChapters() {
   try {
-    const response = await fetch("https://localhost:5000/api/chapters/latest");
+    const response = await fetch("http://localhost:5000/api/chapters/latest");
     const chapters = await response.json();
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
     const chapterContainer = document.querySelector(".chapters-list");
     if (!chapterContainer) return;
