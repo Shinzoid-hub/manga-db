@@ -12,10 +12,10 @@ app.use(express.json());
 
 const path = require("path");
 
-app.use(express.static(path.join(__dirname, "Welcome")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "Welcome", "home.html"));
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 })
 
 
